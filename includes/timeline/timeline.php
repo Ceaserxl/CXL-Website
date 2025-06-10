@@ -3,7 +3,7 @@
 <style>
 .timeline-feed {
   max-width: 700px;
-  margin: 60px auto;
+  margin: auto;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -13,12 +13,11 @@
   background: #121212;
   border-left: 6px solid gold;
   padding: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 8px;
   opacity: 0;
   transform: scale(0.8) translateX(-30px);
   animation: bounceIn 0.6s ease forwards;
-  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -43,10 +42,6 @@
   transition: transform 0.5s ease;
 }
 
-.timeline-entry:hover .timeline-icon {
-  transform: rotate(360deg) scale(1.2);
-}
-
 .timeline-text {
   color: #fff;
   transition: max-height 0.3s ease;
@@ -60,9 +55,6 @@
 
 .timeline-entry.expanded .timeline-text {
   max-height: 500px;
-}
-.timeline-entry.collapsed .timeline-text {
-  max-height: 24px;
 }
 
 @keyframes bounceIn {
@@ -89,7 +81,7 @@ const container = document.getElementById('timeline-feed');
 
 timelineData.forEach((item, index) => {
   const el = document.createElement('div');
-  el.className = `timeline-entry collapsed`;
+  el.className = `timeline-entry expanded`;
   el.style.animationDelay = `${index * 0.3}s`;
   el.innerHTML = `
     <div class="timeline-icon">${item.icon}</div>
@@ -98,10 +90,6 @@ timelineData.forEach((item, index) => {
       ${item.desc}
     </div>
   `;
-  el.addEventListener('click', () => {
-    el.classList.toggle('expanded');
-    el.classList.toggle('collapsed');
-  });
   container.appendChild(el);
 });
 </script>

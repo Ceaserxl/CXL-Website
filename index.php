@@ -45,9 +45,9 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
       </div>
 
       <!-- Timeline Section -->
-      <div class="card-section mt-4">
+      <!-- <div class="card-section mt-4">
         <?php include './includes/timeline/timeline.php'; ?>
-      </div>
+      </div> -->
     </div>
 
     <!-- Sidebar -->
