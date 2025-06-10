@@ -3,7 +3,7 @@
   <h4 class="mb-3">GitHub Projects</h4>
   <?php
     $username = "Ceaserxl";
-    $cacheFile = __DIR__ . '/../../cache/github_cache.html';
+    $cacheFile = __DIR__ . '../../cache/github_cache.html';
     $cacheTime = 300; // 5 minutes
 
     if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTime)) {
