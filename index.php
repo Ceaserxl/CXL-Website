@@ -22,10 +22,6 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
 
 <?php include './includes/nav.php'; ?>
 
-<div class="alert alert-warning text-center rounded-0 mb-4">
-  🚧 This page is currently under development. Features may be incomplete or unstable.
-</div>
-
 <div id="mainContent" style="display: none;" class="container my-5">
   <div class="row">
     <!-- Main Column -->
