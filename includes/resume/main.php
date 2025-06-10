@@ -16,9 +16,6 @@
         <a href="mailto:jeremy.voegele@gmail.com" class="text-decoration-none text-light">jeremy.voegele@gmail.com</a>
       </li>
       <li class="mb-2">
-        <strong>Phone:</strong> <span class="text-light">(682) 300-1197</span>
-      </li>
-      <li class="mb-2">
         <strong>GitHub:</strong>
         <a href="https://github.com/Ceaserxl" target="_blank" class="text-decoration-none text-light">github.com/Ceaserxl</a>
       </li>

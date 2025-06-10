@@ -27,6 +27,6 @@
     </div>
   </div>
 </nav>
-<div class="alert alert-warning text-center rounded-0 mb-4">
+<!-- <div class="alert alert-warning text-center rounded-0 mb-4">
   🚧 This page is currently under development. Features may be incomplete or unstable.
-</div>
+</div> -->
