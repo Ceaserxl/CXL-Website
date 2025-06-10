@@ -2,9 +2,8 @@
 <div class="card-section">
   <h4 class="mb-3">GitHub Projects</h4>
   <?php
-    $token = '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';
     $username = "Ceaserxl";
-    $cacheFile = $_SERVER['DOCUMENT_ROOT'] . 'cache/github_cache.html';
+    $cacheFile = __DIR__ . '/../../cache/github_cache.html';
     $cacheTime = 300; // 5 minutes
 
     if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTime)) {
@@ -13,14 +12,10 @@
       ob_start();
 
       $apiUrl = "https://api.github.com/users/$username/repos?sort=updated";
-
       $context = stream_context_create([
         'http' => [
           'method' => 'GET',
-          'header' => [
-            "User-Agent: PHP",
-            "Authorization: token $token"
-          ]
+          'header' => "User-Agent: PHP\r\n"
         ]
       ]);
 
@@ -28,27 +23,17 @@
       if ($response) {
         $repos = json_decode($response, true);
         $shown = 0;
+
         foreach ($repos as $repo) {
           if ($shown >= 5) break;
-
-          $commitsUrl = str_replace('{/sha}', '', $repo['commits_url']);
-          $commitData = @file_get_contents($commitsUrl, false, $context);
-          $commitInfo = json_decode($commitData, true);
-          $commitMessage = 'N/A';
-          $commitTime = 'Unknown';
-
-          if (!empty($commitInfo[0]['commit'])) {
-            $commitMessage = $commitInfo[0]['commit']['message'];
-            $commitTime = date("M d, Y H:i", strtotime($commitInfo[0]['commit']['committer']['date']));
-          }
 
           echo "<div class='mb-4'>";
           echo "<strong><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white'>" . htmlspecialchars($repo['name']) . "</a></strong><br>";
           echo "<small class='text-muted'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</small><br>";
-          echo "<small class='text-info'>Last commit: <em>" . htmlspecialchars($commitMessage) . "</em> <br> <span class='text-secondary'>on $commitTime</span></small><br>";
           echo "<span class='badge bg-secondary me-1'>★ " . $repo['stargazers_count'] . "</span>";
           echo "<span class='badge bg-info text-dark'>Forks: " . $repo['forks_count'] . "</span>";
           echo "</div>";
+
           $shown++;
         }
 
