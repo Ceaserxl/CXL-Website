@@ -26,23 +26,20 @@ if (!in_array($page, $allowedPages)) {
   <link rel="icon" href="images/default_avatar.png" type="image/x-icon" />
 </head>
 <body>
+  <?php include './global/nav/nav.php'; ?>
+  <?php if ($isRoot): ?>
+    <div id="splash-screen">
+      <img id="splash-avatar" src="images/C_Logo.png" alt="Splash Avatar">
+    </div>
+  <?php endif; ?>
 
-  <div id="page-wrapper">
-    <?php include './global/nav/nav.php'; ?>
-    <?php if ($isRoot): ?>
-      <div id="splash-screen">
-        <img id="splash-avatar" src="images/C_Logo.png" alt="Splash Avatar">
-      </div>
-    <?php endif; ?>
+  <?php include "./pages/{$page}/index.php"; ?>
+  <?php include './global/social/socials.php'; ?>
 
-    <?php include "./pages/{$page}/index.php"; ?>
-    <?php include './global/social/socials.php'; ?>
+  <footer class="mt-5 py-4 text-center">
+    <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
+  </footer>
 
-    <footer class="mt-5 py-4 text-center">
-      <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
-    </footer>
-  </div>
-  
   <!-- Scripts at end of body for better loading -->
   <script src="./assets/popper.min.js"></script>
   <script src="./assets/bootstrap.bundle.min.js"></script>
