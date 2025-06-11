@@ -50,3 +50,4 @@ if (!in_array($page, $allowedPages)) {
   <script src="./assets/script.js"></script>
 </body>
 </html>
+
