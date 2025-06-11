@@ -19,7 +19,7 @@ BRANCH = "main"
 LOCAL_REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Secret from GitHub webhook settings (set to your secret or None to disable verification)
-GITHUB_SECRET = b'f3a8c2d7e1b94c3f8a0d12f3c9e4b5678f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c'
+GITHUB_SECRET = None
 
 app = Flask(__name__)
 
