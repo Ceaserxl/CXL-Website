@@ -7,29 +7,7 @@
     Passionate about cloud infrastructure, homelab environments, and building full-stack tools to support technical teams.
     Security+ certified and experienced in hands-on leadership across diverse operational environments.
   </p>
-
-  <div class="mt-4">
-    <h5 class="mb-3">📬 Contact</h5>
-    <ul class="list-unstyled">
-      <li class="mb-2">
-        <strong>Email:</strong>
-        <a href="mailto:jeremy.voegele@gmail.com" class="text-decoration-none text-light">jeremy.voegele@gmail.com</a>
-      </li>
-      <li class="mb-2">
-        <strong>GitHub:</strong>
-        <a href="https://github.com/Ceaserxl" target="_blank" class="text-decoration-none text-light">github.com/Ceaserxl</a>
-      </li>
-      <li class="mb-2">
-        <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/jeremy-voegele-5062951b7/" target="_blank" class="text-decoration-none text-light">linkedin.com/in/jeremy-voegele</a>
-      </li>
-      <li class="mb-2">
-        <strong>Location:</strong> <span class="text-light">San Diego, CA</span>
-      </li>
-    </ul>
-  </div>
 </div>
-
 
 <div id="work" class="card-section resume-section animated-section" data-animate="fade-scale">
   <h4>Work Experience</h4>

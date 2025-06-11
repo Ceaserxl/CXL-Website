@@ -16,7 +16,7 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
 
 <?php if ($isRoot): ?>
   <div id="splash-screen">
-    <img id="splash-avatar" src="images/default_avatar.png" alt="Splash Avatar">
+    <img id="splash-avatar" src="images/C_Logo.png" alt="Splash Avatar">
   </div>
 <?php endif; ?>
 
@@ -58,7 +58,11 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
 <!-- Socials Bar -->
 <?php include './includes/socials.php'; ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Footer -->
+<?php include './includes/footer.php'; ?>
+
+<!-- Scripts -->
+<script src="assets/boostrap.bundle.min.js"></script>
 <script>
   window.addEventListener('load', () => {
     const splash = document.getElementById('splash-screen');

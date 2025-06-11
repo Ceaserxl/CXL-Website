@@ -1,6 +1,7 @@
 <?php
 $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) === 'resume.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
   <title>Jeremy Voegele Resume</title>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="includes/resume/resume.css" />
   <link rel="icon" href="images/default_avatar.png" type="image/x-icon" />
@@ -37,4 +38,5 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
   <script src="includes/resume/resume.js"></script>
 
 </body>
+  <?php include './includes/footer.php'; ?>
 </html>
