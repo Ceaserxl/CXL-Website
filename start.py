@@ -118,3 +118,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logging.info("Shutting down...")
         stop_php_server()
+
