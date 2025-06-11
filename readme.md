@@ -18,28 +18,33 @@ A simple PHP-based website deployed from this repository. The site is automatica
 
 - PHP 7.4 or higher
 - Git
-- Python 3 (for webhook listener and deployment script)
+- Python (for webhook listener and deployment script)
 
 ### Setup
 
 1. Clone this repository:
    ```bash
    git clone https://github.com/Ceaserxl/CXL-Website.git
-   ```
 
 2. Configure the webhook listener (`start.py`) and set your GitHub webhook secret in a `.env` file.
 
 3. Run the deployment script:
-
    ```bash
-   python3 start.py
-   ```
+   python start.py
 
-4. Configure your GitHub repository webhook to point to:
+4. To keep the script running after disconnecting from the console, run it inside a detached screen session named `cxl`:
+   ```bash
+   screen -S cxl python start.py
 
+   Detach from the session with `Ctrl + A` then `D`.
+
+5. To reattach later:
+   ```bash
+   screen -r cxl
+
+6. Configure your GitHub repository webhook to point to:
    ```
    http://your-server-domain:5000/github-webhook
-   ```
 
 ## License
 
