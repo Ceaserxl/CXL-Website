@@ -9,7 +9,7 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
   <title>Jeremy Voegele Resume</title>
 
   <!-- Stylesheets -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/bootstrap.min.css"/>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="includes/resume/resume.css" />
   <link rel="icon" href="images/default_avatar.png" type="image/x-icon" />

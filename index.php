@@ -8,7 +8,7 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jeremy Voegele Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/default_avatar.png" type="image/x-icon" />
 </head>
@@ -35,15 +35,15 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
             <p class="text-muted mb-0">IT Specialist | Developer | Veteran</p>
           </div>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error...</p>
-        <p>Integer facilisis, justo nec ullamcorper pulvinar...</p>
+        <p>Welcome to my personal portfolio. I'm a U.S. Navy veteran and IT specialist with a passion for Linux systems, cloud infrastructure, and full-stack development. Here you'll find my work, projects, and technical journey as I transition from military service to the tech industry.</p>
       </div>
 
-      <!-- Timeline Section -->
-      <!-- <div class="card-section mt-4">
+      <!-- Timeline Section (optional future content) -->
+      <!-- 
+      <div class="card-section mt-4">
         <?php include './includes/timeline/timeline.php'; ?>
-      </div> -->
+      </div> 
+      -->
     </div>
 
     <!-- Sidebar -->
@@ -55,7 +55,7 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
   </div>
 </div>
 
-<!-- Socials Bar (Horizontal) -->
+<!-- Socials Bar -->
 <?php include './includes/socials.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

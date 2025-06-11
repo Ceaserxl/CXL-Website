@@ -18,7 +18,7 @@
           <a class="nav-link" href="#">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/resume.php">Resume</a>
+          <a class="nav-link" href="/resume">Resume</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
