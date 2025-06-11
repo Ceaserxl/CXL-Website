@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (el.id === 'skills-sticky') {
-        const bars = el.querySelectorAll('.progress-bar');
+        const bars = el.querySelectorAll('.xp-fill');
         bars.forEach(bar => {
           const score = parseInt(bar.dataset.score);
           bar.style.width = '0%';
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             targets: bar,
             width: `${score * 10}%`,
             duration: 1000,
-            easing: 'easeOutQuart'
+            easing: 'linear'
           });
         });
       }
