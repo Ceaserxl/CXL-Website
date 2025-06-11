@@ -40,7 +40,7 @@ if (!in_array($page, $allowedPages)) {
   </div>
 
   <footer class="mt-5 py-4 text-center">
-    <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.1231231231</small>
+    <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
   </footer>
 
   <!-- Scripts at end of body for better loading -->
