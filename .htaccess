@@ -1,9 +1,0 @@
-RewriteEngine On
-
-# Force no .php extension
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php [L]
-
-# Optional: remove trailing slashes (optional but recommended for consistency)
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]

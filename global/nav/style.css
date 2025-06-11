@@ -1,0 +1,37 @@
+/* ===================================== */
+/*               NAVBAR                  */
+/* ===================================== */
+
+.navbar {
+  background: var(--navbar-gradient);
+  border-bottom: 1px solid #007bff66;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+  animation: glow-cycle 6s linear infinite;
+}
+
+.navbar-brand img {
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 0 10px var(--glow-cyan);
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: rotate(10deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+}
+
+.navbar-nav .nav-link {
+  color: var(--primary-blue) !important;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--highlight-gold) !important;
+  text-shadow: 0 0 6px var(--highlight-gold);
+}
+
+@keyframes glow-cycle {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,123,255,0.2); }
+  50% { box-shadow: 0 0 30px rgba(255,215,0,0.4); }
+}

@@ -5,7 +5,7 @@
 
 <script>
 function updateStatus() {
-  fetch('includes/status/status-update.php')  // ✅ Correctly points to backend
+  fetch('pages/home/sidebar/status/status-update.php')  // ✅ Correctly points to backend
     .then(res => res.json())
     .then(services => {
       const container = document.getElementById('status-list');
@@ -29,5 +29,5 @@ function updateStatus() {
 }
 
 updateStatus();
-setInterval(updateStatus, 5000);
+setInterval(updateStatus, 10000);
 </script>

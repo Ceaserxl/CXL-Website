@@ -3,7 +3,7 @@
   <h4 class="mb-3">GitHub Projects</h4>
   <?php
     $username = "Ceaserxl";
-    $cacheFile = __DIR__ . '../../cache/github_cache.html';
+    $cacheFile = __DIR__ . '/cache/github_cache.html';
     $cacheTime = 300; // 5 minutes
 
     if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTime)) {
@@ -29,7 +29,7 @@
 
           echo "<div class='mb-4'>";
           echo "<strong><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white'>" . htmlspecialchars($repo['name']) . "</a></strong><br>";
-          echo "<small class='text-muted'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</small><br>";
+          echo "<small style='color: white !important;'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</small><br>";
           echo "<span class='badge bg-secondary me-1'>★ " . $repo['stargazers_count'] . "</span>";
           echo "<span class='badge bg-info text-dark'>Forks: " . $repo['forks_count'] . "</span>";
           echo "</div>";

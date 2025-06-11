@@ -1,4 +1,4 @@
-<div id="skills-sticky" class="card-section resume-section animated-section" data-animate="bounce-bars">
+<div id="skills-sticky" class="card-section animated-section" data-animate="bounce-bars">
   <h4 class="mb-3 text-center">🛠️ Skills</h4>
   
   <?php
@@ -28,7 +28,7 @@
     $width = $score * 10;
   ?>
     <div class="xp-bar mb-2 position-relative">
-      <div class="xp-fill" data-score="<?= $score ?>"></div>
+      <div class="xp-fill" style="--target-width: <?= $width ?>%;"></div>
       <div class="xp-text">
         <span class="xp-label"><?= htmlspecialchars($label) ?></span>
         <span class="xp-score"><?= $score ?>/10</span>

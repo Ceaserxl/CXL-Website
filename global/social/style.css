@@ -1,0 +1,76 @@
+/* ===================================== */
+/*         SOCIAL BAR & BUTTONS          */
+/* ===================================== */
+
+.socials-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.social-toggle-btn {
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: var(--light-text);
+  padding: 10px 16px;
+  border-radius: 40px;
+  box-shadow: 0 0 12px var(--glow-cyan);
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.social-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.socials-bar {
+  position: fixed;
+  bottom: 45px;
+  right: 75px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 16px;
+  border-radius: 40px;
+  box-shadow: 0 0 20px var(--glow-cyan);
+  backdrop-filter: blur(8px);
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.socials-bar.active {
+  max-width: 500px;
+  opacity: 1;
+}
+
+.socials-bar a img {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 5px var(--glow-cyan));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.socials-bar a:hover img {
+  transform: scale(1.3) rotate(8deg);
+  filter: drop-shadow(0 0 10px var(--highlight-gold));
+}
+
+@media (min-width: 768px) {
+  .social-toggle-btn { display: none; }
+  .socials-bar {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    max-width: unset;
+    opacity: 1;
+  }
+}

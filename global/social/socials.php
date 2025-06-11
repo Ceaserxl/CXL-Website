@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/global/social/style.css" />
 <div class="socials-wrapper">
   <button id="socialToggle" class="social-toggle-btn d-md-none">🔗</button>
 

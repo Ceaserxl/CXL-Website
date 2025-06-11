@@ -71,7 +71,7 @@ const timelineData = [
   { icon: "🎓", title: "Graduation Complete", desc: "2014: Escaped the academic matrix with style." },
   { icon: "⚓", title: "Navy Joined", desc: "2014: Swore in. Adventure initiated. Anchors aweigh!" },
   { icon: "🌊", title: "Deployment", desc: "2018: Tasted saltwater, chaos, and 3 hours of sleep." },
-  { icon: "🏁", title: "Left Active Duty", desc: "2024: Freedom patch applied. Honorably discharged." },
+  { icon: "🏁", title: "Left Active Duty", desc: "2023: Freedom patch applied. Honorably discharged." },
   { icon: "🔄", title: "Joined Reserves", desc: "2024: Still kind of in. Just weekends now." },
   { icon: "💻", title: "IT Career Started", desc: "2024: From anchor to admin." },
   { icon: "🔐", title: "Security+ Certified", desc: "2025: Defender of logins. Slayer of weak passwords." }

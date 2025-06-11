@@ -1,7 +1,8 @@
 <!-- includes/nav.php -->
+<link rel="stylesheet" href="/global/nav/style.css" />
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="/index.php">
+    <a class="navbar-brand d-flex align-items-center" href="/">
       <img src="images/default_avatar.png" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;">
     </a>
 
@@ -12,13 +13,13 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-xl-0">
         <li class="nav-item">
-          <a class="nav-link" href="/index.php">Home</a>
+          <a class="nav-link" href="/index.php?page=home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/Ceaserxl">GitHub</a>
+          <a class="nav-link" href="https://github.com/Ceaserxl" target="_blank">GitHub</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/resume.php">Resume</a>
+          <a class="nav-link" href="/index.php?page=resume">Resume</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
