@@ -2,7 +2,10 @@ import requests
 import os
 import subprocess
 import logging
-import time
+import threading
+from flask import Flask, request, abort
+import hmac
+import hashlib
 import signal
 
 logging.basicConfig(
@@ -15,29 +18,12 @@ GITHUB_REPO = "Ceaserxl/CXL-Website"
 BRANCH = "main"
 LOCAL_REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 
-def get_latest_commit_sha():
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/commits/{BRANCH}"
-    logging.info(f"Checking latest commit SHA from {url}")
-    resp = requests.get(url)
-    resp.raise_for_status()
-    sha = resp.json()['sha']
-    logging.info(f"Latest commit SHA: {sha}")
-    return sha
+# Secret from GitHub webhook settings (set to your secret or None to disable verification)
+GITHUB_SECRET = b'your_webhook_secret_here'  # Replace with your actual secret or None
 
-def read_last_deployed_sha():
-    try:
-        with open("last_deployed_sha.txt") as f:
-            sha = f.read().strip()
-            logging.info(f"Last deployed commit SHA: {sha}")
-            return sha
-    except FileNotFoundError:
-        logging.info("No previous deployment record found.")
-        return None
+app = Flask(__name__)
 
-def write_last_deployed_sha(sha):
-    with open("last_deployed_sha.txt", "w") as f:
-        f.write(sha)
-    logging.info(f"Updated last deployed commit SHA to {sha}")
+php_process = None  # Will hold the running PHP server process
 
 def clone_repo_if_needed():
     git_dir = os.path.join(LOCAL_REPO_DIR, '.git')
@@ -65,44 +51,68 @@ def update_repo():
     subprocess.run(["git", "-C", LOCAL_REPO_DIR, "pull"], check=True)
 
 def start_php_server():
+    global php_process
     logging.info("Starting PHP built-in server on 0.0.0.0:8001")
-    return subprocess.Popen(["php", "-S", "0.0.0.0:8001"], cwd=LOCAL_REPO_DIR)
+    php_process = subprocess.Popen(["php", "-S", "0.0.0.0:8001"], cwd=LOCAL_REPO_DIR)
 
-def main_loop():
-    clone_repo_if_needed()
-    last_sha = None
-    php_process = None
-
-    try:
-        while True:
-            latest_sha = get_latest_commit_sha()
-            if latest_sha != last_sha:
-                logging.info("New commit detected, updating repo...")
-                update_repo()
-                write_last_deployed_sha(latest_sha)
-                last_sha = latest_sha
-
-                # Restart PHP server if running
-                if php_process:
-                    logging.info("Stopping PHP server for restart...")
-                    php_process.terminate()
-                    try:
-                        php_process.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        php_process.kill()
-                        php_process.wait()
-                    logging.info("PHP server stopped.")
-
-                php_process = start_php_server()
-            else:
-                logging.info("No new commits detected.")
-
-            time.sleep(10)
-    except KeyboardInterrupt:
-        logging.info("Shutting down...")
-        if php_process:
-            php_process.terminate()
+def stop_php_server():
+    global php_process
+    if php_process:
+        logging.info("Stopping PHP server...")
+        php_process.terminate()
+        try:
+            php_process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            php_process.kill()
             php_process.wait()
+        php_process = None
+        logging.info("PHP server stopped.")
+
+def verify_signature(data, signature):
+    mac = hmac.new(GITHUB_SECRET, msg=data, digestmod=hashlib.sha256)
+    expected = 'sha256=' + mac.hexdigest()
+    return hmac.compare_digest(expected, signature)
+
+@app.route('/github-webhook', methods=['POST'])
+def github_webhook():
+    signature = request.headers.get('X-Hub-Signature-256')
+    if GITHUB_SECRET:
+        if not signature or not verify_signature(request.data, signature):
+            logging.warning("Invalid webhook signature")
+            abort(400, 'Invalid signature')
+
+    event = request.headers.get('X-GitHub-Event')
+    if event == "push":
+        logging.info("Received GitHub push event, updating repo...")
+        try:
+            update_repo()
+            # Restart PHP server to apply changes
+            stop_php_server()
+            start_php_server()
+        except Exception as e:
+            logging.error(f"Error updating repo: {e}")
+            abort(500, 'Update failed')
+        return "Updated", 200
+
+    return "Event not handled", 200
+
+def run_flask_app():
+    app.run(host='0.0.0.0', port=5000)
 
 if __name__ == "__main__":
-    main_loop()
+    clone_repo_if_needed()
+    start_php_server()
+
+    # Run Flask webhook listener in a separate thread
+    flask_thread = threading.Thread(target=run_flask_app)
+    flask_thread.daemon = True
+    flask_thread.start()
+
+    logging.info("Webhook listener started on port 5000. Waiting for events...")
+
+    try:
+        # Keep main thread alive
+        signal.pause()
+    except KeyboardInterrupt:
+        logging.info("Shutting down...")
+        stop_php_server()
