@@ -37,12 +37,12 @@ if (!in_array($page, $allowedPages)) {
 
     <?php include "./pages/{$page}/index.php"; ?>
     <?php include './global/social/socials.php'; ?>
+
+    <footer class="mt-5 py-4 text-center">
+      <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
+    </footer>
   </div>
-
-  <footer class="mt-5 py-4 text-center">
-    <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
-  </footer>
-
+  
   <!-- Scripts at end of body for better loading -->
   <script src="./assets/popper.min.js"></script>
   <script src="./assets/bootstrap.bundle.min.js"></script>
