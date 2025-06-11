@@ -1,0 +1,23 @@
+# Ignore Python cache and env files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore environment variable files
+.env
+
+# Ignore logs
+*.log
+
+# Ignore Python virtual environment folders
+venv/
+env/
+.env/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore your deployment tracking file
+last_deployed_sha.txt

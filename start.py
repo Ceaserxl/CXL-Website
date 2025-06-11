@@ -7,6 +7,7 @@ from flask import Flask, request, abort
 import hmac
 import hashlib
 import signal
+from dotenv import load_dotenv
 
 logging.basicConfig(
     level=logging.INFO,
@@ -14,12 +15,14 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 
+load_dotenv()
+
 GITHUB_REPO = "Ceaserxl/CXL-Website"
 BRANCH = "main"
 LOCAL_REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Secret from GitHub webhook settings (set to your secret or None to disable verification)
-GITHUB_SECRET = None
+secret_str = os.getenv("GITHUB_SECRET")
+GITHUB_SECRET = secret_str.encode() if secret_str else None
 
 app = Flask(__name__)
 
@@ -69,6 +72,8 @@ def stop_php_server():
         logging.info("PHP server stopped.")
 
 def verify_signature(data, signature):
+    if not GITHUB_SECRET:
+        return True  # No secret set, skip verification
     mac = hmac.new(GITHUB_SECRET, msg=data, digestmod=hashlib.sha256)
     expected = 'sha256=' + mac.hexdigest()
     return hmac.compare_digest(expected, signature)
@@ -86,7 +91,6 @@ def github_webhook():
         logging.info("Received GitHub push event, updating repo...")
         try:
             update_repo()
-            # Restart PHP server to apply changes
             stop_php_server()
             start_php_server()
         except Exception as e:
@@ -103,7 +107,6 @@ if __name__ == "__main__":
     clone_repo_if_needed()
     start_php_server()
 
-    # Run Flask webhook listener in a separate thread
     flask_thread = threading.Thread(target=run_flask_app)
     flask_thread.daemon = True
     flask_thread.start()
@@ -111,7 +114,6 @@ if __name__ == "__main__":
     logging.info("Webhook listener started on port 5000. Waiting for events...")
 
     try:
-        # Keep main thread alive
         signal.pause()
     except KeyboardInterrupt:
         logging.info("Shutting down...")
