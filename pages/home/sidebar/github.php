@@ -4,7 +4,7 @@
   <?php
     $username = "Ceaserxl";
     $cacheFile = __DIR__ . '/cache/github_cache.html';
-    $cacheTime = 60; // 1 Hour
+    $cacheTime = 3600; // 1 Hour
 
     if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTime)) {
       echo file_get_contents($cacheFile);
