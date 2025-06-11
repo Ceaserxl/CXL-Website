@@ -6,4 +6,4 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_dir)
 
 # Run PHP server on all interfaces (public)
-subprocess.run(["php", "-S", "0.0.0.0:80"])
+subprocess.run(["php", "-S", "0.0.0.0:8001"])
