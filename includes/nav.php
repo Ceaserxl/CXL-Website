@@ -15,7 +15,7 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
+          <a class="nav-link" href="https://github.com/Ceaserxl">GitHub</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/resume">Resume</a>
