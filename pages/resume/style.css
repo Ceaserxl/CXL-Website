@@ -25,7 +25,7 @@
   background: linear-gradient(90deg, var(--primary-blue), var(--glow-cyan));
   height: 100%;
   border-radius: 20px 0 0 20px;
-  animation: fillBar 1s ease forwards;
+  animation: fillBar 2.5s ease forwards;
 }
 
 @keyframes fillBar {
