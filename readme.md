@@ -1,4 +1,3 @@
-````markdown
 # CXL-Website
 
 This is the official website repository for CXL.
@@ -26,7 +25,7 @@ A simple PHP-based website deployed from this repository. The site is automatica
 1. Clone this repository:
    ```bash
    git clone https://github.com/Ceaserxl/CXL-Website.git
-````
+   ```
 
 2. Configure the webhook listener (`start.py`) and set your GitHub webhook secret in a `.env` file.
 
