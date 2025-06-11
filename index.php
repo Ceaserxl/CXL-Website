@@ -21,19 +21,11 @@ if (!in_array($page, $allowedPages)) {
   <title>Jeremy Voegele Portfolio</title>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/assets/bootstrap.min.css" />
-  <link rel="stylesheet" href="/global/splash/style.css" />
+  <link rel="stylesheet" href="assets/bootstrap.min.css"/>
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="images/default_avatar.png" type="image/x-icon" />
-
-  <!-- Scripts loaded in header -->
-  <script src="/assets/bootstrap.bundle.min.js" defer></script>
-  <script src="/assets/anime.min.js" defer></script>
-  <script src="/assets/script.js" defer></script>
 </head>
 <body>
-
-  
 
   <div id="page-wrapper">
     <?php include './global/nav/nav.php'; ?>
@@ -47,11 +39,14 @@ if (!in_array($page, $allowedPages)) {
     <?php include './global/social/socials.php'; ?>
   </div>
 
-  
-
   <footer class="mt-5 py-4 text-center">
     <small>&copy; <?php echo date("Y"); ?> Jeremy Voegele. All Rights Reserved.</small>
   </footer>
 
+  <!-- Scripts at end of body for better loading -->
+  <script src="./assets/popper.min.js"></script>
+  <script src="./assets/bootstrap.bundle.min.js"></script>
+  <script src="./assets/anime.min.js"></script>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
