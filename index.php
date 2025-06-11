@@ -38,13 +38,9 @@ $isRoot = isset($_SERVER['SCRIPT_NAME']) && basename($_SERVER['SCRIPT_NAME']) ==
         </div>
         <p>Welcome to my personal portfolio. I'm a U.S. Navy veteran and IT specialist with a passion for Linux systems, cloud infrastructure, and full-stack development. Here you'll find my work, projects, and technical journey as I transition from military service to the tech industry.</p>
       </div>
-
-      <!-- Optional Future Timeline Section -->
-      <!--
       <div class="card-section mt-4">
         <?php include './includes/timeline/timeline.php'; ?>
       </div>
-      -->
     </div>
 
     <!-- Sidebar -->
