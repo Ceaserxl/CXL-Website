@@ -1,5 +1,4 @@
 <div class="timeline-feed" id="timeline-feed"></div>
-<link rel="stylesheet" href="/pages/home/timeline/timeline.css" />
 <script>
 const timelineData = [
   { icon: "💡", title: "Discovered IT Passion", desc: "2010: Found out computers are cooler than people. Started coding, never looked back." },
