@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 800);  // match CSS transition duration
       }, 1500);  // initial splash show duration
     });
+  } else {
+    // If no splash, immediately allow scrolling
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = 'auto';
   }
 
   const pageWrapper = document.getElementById('page-wrapper');

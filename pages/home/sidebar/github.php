@@ -25,15 +25,36 @@
         $shown = 0;
 
         foreach ($repos as $repo) {
-          if ($shown >= 5) break;
+          if ($shown >= 3) break;
 
-          echo "<div class='mb-4'>";
-          echo "<strong><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white'>" . htmlspecialchars($repo['name']) . "</a></strong><br>";
-          echo "<small style='color: white !important;' class='text-white'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</small><br>";
-          echo "<span class='badge bg-secondary me-1'>★ " . $repo['stargazers_count'] . "</span>";
+          // Adjust margin for last item
+          $marginClass = ($shown == 2) ? 'mb-0' : 'mb-3';
+          echo "<div class='{$marginClass}'>";
+          echo "<h5><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white text-decoration-underline'>" . htmlspecialchars($repo['name']) . "</a></h5>";
+          echo "<p class='mb-1 text-white'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</p>";
+
+          // Latest commit
+          $commitsUrl = "https://api.github.com/repos/$username/" . $repo['name'] . "/commits?per_page=1";
+          $commitsResponse = @file_get_contents($commitsUrl, false, $context);
+          if ($commitsResponse) {
+            $commits = json_decode($commitsResponse, true);
+            if (!empty($commits)) {
+              $commit = $commits[0];
+              $commitMsg = htmlspecialchars($commit['commit']['message']);
+              $commitDate = date('Y-m-d H:i', strtotime($commit['commit']['committer']['date']));
+              $commitUrl = htmlspecialchars($commit['html_url']);
+
+              echo "<p class='mb-2 text-white small'>Latest commit: <a href='$commitUrl' target='_blank' class='text-white text-decoration-underline'>$commitMsg</a> on $commitDate</p>";
+            }
+          }
+
+          // Badges for stars and forks
+          echo "<div>";
+          echo "<span class='badge bg-secondary me-2'>★ " . $repo['stargazers_count'] . "</span>";
           echo "<span class='badge bg-info text-dark'>Forks: " . $repo['forks_count'] . "</span>";
           echo "</div>";
 
+          echo "</div>";
           $shown++;
         }
 
