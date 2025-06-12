@@ -1,0 +1,184 @@
+/* ===================================== */
+/*            THEME VARIABLES            */
+/* ===================================== */
+
+:root {
+  --primary-blue: #007bff;
+  --highlight-gold: #ffd700;
+  --dark-bg: #1e1e1e;
+  --light-text: #ffffff;
+  --mid-text: #bbbbbb;
+  --glow-cyan: rgba(0, 198, 255, 0.5);
+  --fade-bg: rgba(255, 255, 255, 0.03);
+  --navbar-gradient: linear-gradient(90deg, #111111, #1f1f1f, #111111);
+}
+
+/* ===================================== */
+/*              BASE STYLES              */
+/* ===================================== */
+
+/* Set background color on html and body for instant paint */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* Prevent scroll while splash is visible */
+}
+
+/* Wrapper div to handle fade-in animation without white flash */
+#page-wrapper {
+  opacity: 0;
+  min-height: 100vh;
+  transition: opacity 0.2s ease;  /* smoother, a bit longer fade */
+  pointer-events: none;           /* prevent interaction while hidden */
+}
+
+#page-wrapper.visible {
+  opacity: 1;
+  transition: opacity 0.5s ease;  /* smoother, a bit longer fade */
+  pointer-events: auto;           /* enable interaction when visible */
+}
+
+.card-section {
+  background: linear-gradient(135deg, #1f1f1f, #2c2f33);
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+  padding: 20px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-section:hover {
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ===================================== */
+/*           SPLASH SCREEN               */
+/* ===================================== */
+
+#splash-screen {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh; /* Use viewport units for full coverage */
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden; /* Fix rendering flicker on mobile */
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0); /* Promote to GPU layer to reduce flicker */
+  transform: translateZ(0);
+}
+
+#splash-avatar {
+  width: 150px;
+  height: 150px;
+  max-width: 80vw;   /* Make responsive */
+  max-height: 80vw;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out 3;
+  box-shadow: 0 0 20px var(--glow-cyan);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Make sure the fadeout transition in JS is smooth */
+#splash-screen.fade-out {
+  transition: opacity 0.8s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+/* ===================================== */
+/*               NAVBAR                  */
+/* ===================================== */
+
+.navbar {
+  background: var(--navbar-gradient);
+  border-bottom: 1px solid #007bff66;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+  animation: glow-cycle 6s linear infinite;
+}
+
+.navbar-brand img {
+  width: 50px; /* increased from 40px */
+  height: 50px; /* increased from 40px */
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 0 10px var(--glow-cyan);
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar-brand img:hover {
+  transform: rotate(10deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+}
+
+.navbar-nav .nav-link {
+  color: var(--primary-blue) !important;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--highlight-gold) !important;
+  text-shadow: 0 0 6px var(--highlight-gold);
+}
+
+/* Active nav link styling */
+.navbar-nav .nav-link.active {
+  color: var(--highlight-gold) !important;
+  text-shadow: 0 0 8px var(--highlight-gold);
+}
+
+/* Hamburger toggler styles */
+.navbar-toggler {
+  border-color: var(--primary-blue);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280,123,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Glow animation */
+@keyframes glow-cycle {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  }
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
