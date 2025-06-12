@@ -1,4 +1,3 @@
-<!-- GitHub Projects -->
 <div class="card-section">
   <h4 class="mb-3">GitHub Projects</h4>
   <?php
@@ -24,18 +23,28 @@
         $repos = json_decode($response, true);
         $shown = 0;
 
+        echo "<ul class='list-unstyled'>";
+
         foreach ($repos as $repo) {
           if ($shown >= 5) break;
 
-          echo "<div class='mb-4'>";
-          echo "<strong><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white'>" . htmlspecialchars($repo['name']) . "</a></strong><br>";
-          echo "<small style='color: white !important;'>" . htmlspecialchars($repo['description'] ?? 'No description') . "</small><br>";
-          echo "<span class='badge bg-secondary me-1'>★ " . $repo['stargazers_count'] . "</span>";
-          echo "<span class='badge bg-info text-dark'>Forks: " . $repo['forks_count'] . "</span>";
-          echo "</div>";
+          $name = htmlspecialchars($repo['name']);
+          $url = htmlspecialchars($repo['html_url']);
+          $desc = htmlspecialchars($repo['description'] ?? 'No description');
+          $stars = (int)$repo['stargazers_count'];
+          $forks = (int)$repo['forks_count'];
+
+          echo "<li class='mb-3'>";
+          echo "<strong><a href='{$url}' target='_blank' class='text-white'>{$name}</a></strong><br>";
+          echo "<small class='text-muted'>{$desc}</small><br>";
+          echo "<span class='badge bg-secondary me-2'>★ {$stars}</span>";
+          echo "<span class='badge bg-info text-dark'>Forks: {$forks}</span>";
+          echo "</li>";
 
           $shown++;
         }
+
+        echo "</ul>";
 
         if (!is_dir(dirname($cacheFile))) {
           mkdir(dirname($cacheFile), 0755, true);

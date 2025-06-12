@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="/pages/resume/style.css" />
-
-<div id="page-wrapper">
+<div id="page-wrapper" class="visible">
   <div id="mainContent" class="container my-5">
     <div class="row">
       <div class="col-lg-8">

@@ -23,14 +23,3 @@
     </a>
   </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('socialToggle');
-  const socialsBar = document.querySelector('.socials-bar');
-
-  toggleBtn.addEventListener('click', () => {
-    socialsBar.classList.toggle('active');
-  });
-});
-</script>
