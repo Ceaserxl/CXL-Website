@@ -5,13 +5,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (splash) {
     await new Promise(resolve => {
       setTimeout(() => {
-        splash.style.transition = 'opacity 0.8s ease-out';
-        splash.style.opacity = '0';
+        splash.classList.add('fade-out');  // add class to trigger CSS opacity transition
         setTimeout(() => {
           splash.style.display = 'none';
+          // Restore scrolling after splash hidden
+          document.documentElement.style.overflow = '';
+          document.body.style.overflow = 'auto';
           resolve();
-        }, 800);
-      }, 1000);
+        }, 800);  // match CSS transition duration
+      }, 1500);  // initial splash show duration
     });
   }
 
