@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function FadeWrapper({ children }) {
+export default function FadeWrapper({ children, style }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function FadeWrapper({ children }) {
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.8s ease',
         height: '100%',
+        ...style
       }}
     >
       {children}

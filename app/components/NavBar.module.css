@@ -1,3 +1,7 @@
+/* ===================================== */
+/*               NAVBAR                  */
+/* ===================================== */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -12,8 +16,12 @@
   padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  animation: navbarFlyIn 0.8s ease-out forwards;
+  animation-delay: 0.2s;
 }
 
+/* Logo Styling */
 .logo {
   display: flex;
   justify-content: center;
@@ -22,20 +30,22 @@
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.logoNormal {
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.8);
+}
+
 .logoHover {
   transform: scale(1.15);
   box-shadow: 0 0 20px rgba(0, 198, 255, 1), 0 0 40px rgba(0, 198, 255, 0.8);
 }
 
-.logoNormal {
-  box-shadow: 0 0 10px rgba(0, 198, 255, 0.8);
-}
-
+/* Links Styling */
 .links {
   display: flex;
   gap: 1.5rem;
 }
 
+/* Hamburger Menu */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -48,11 +58,12 @@
   width: 25px;
   height: 3px;
   background-color: #00c6ff;
-  box-shadow: 0 0 5px rgba(0,198,255,0.8);
+  box-shadow: 0 0 5px rgba(0, 198, 255, 0.8);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
+/* Mobile Menu */
 .mobileMenu {
   position: fixed;
   top: 0;
@@ -78,6 +89,10 @@
 .mobileMenuVisible {
   right: 0;
 }
+
+/* ===================================== */
+/*           CONTACT MODAL               */
+/* ===================================== */
 
 .contactModalOverlay {
   position: fixed;
@@ -114,4 +129,19 @@
   color: #111111;
   font-weight: bold;
   transition: all 0.3s ease;
+}
+
+/* ===================================== */
+/*           ANIMATIONS                  */
+/* ===================================== */
+
+@keyframes navbarFlyIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

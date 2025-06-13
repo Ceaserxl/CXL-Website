@@ -1,29 +1,207 @@
 /* ===================================== */
-/*               GLOBAL                  */
+/*               GLOBAL RESET            */
 /* ===================================== */
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: #111111; /* match navbar background */
+  min-height: 100vh;
+  background-color: #111111;
   color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Apply soft text glow to match theme */
-body {
   text-shadow: 0 0 5px rgba(0, 198, 255, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Standard container padding for full app */
-main {
+/* ===================================== */
+/*            LAYOUT CONTAINER           */
+/* ===================================== */
+
+.layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   max-width: 1200px;
-  margin: 100px auto;;
-  padding: 2rem;
+  width: 100%;
+  margin: 100px auto 40px auto;
+  gap: 2rem;
+  padding: 0 2rem;
+  padding-bottom: 40px;
+  flex: 1;
   box-sizing: border-box;
-  padding-top: 10px; /* offset for fixed navbar */
-  background-color: #111111; /* keeps main consistent if needed */
-  box-shadow: 0 0 10px rgba(0, 198, 255, 0.2); /* subtle glow for content container */
+}
+
+/* ===================================== */
+/*             MAIN CONTENT              */
+/* ===================================== */
+
+.main-content {
+  flex: 2;
+}
+
+/* Stack for main content inside layout-container */
+.main-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 2;
+  opacity: 0;
+  animation: smoothFadeIn 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.content-card {
+  background-color: #111111;
+  padding: 1.5rem;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.2);
+  box-sizing: border-box;
+}
+
+/* ===================================== */
+/*               SIDEBAR                 */
+/* ===================================== */
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: smoothFadeIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.sidebar-content-card {
+  background-color: #111111;
+  padding: 1rem;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.2);
+  box-sizing: border-box;
+}
+
+/* ===================================== */
+/*               KEYFRAMES               */
+/* ===================================== */
+
+@keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ===================================== */
+/*               FOOTER                  */
+/* ===================================== */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 1rem;
+  background-color: #111111;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.2);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(100px);
+  animation: footerFlyIn 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+}
+
+
+/* ===================================== */
+/*            ANIMATIONS                 */
+/* ===================================== */
+
+@keyframes footerFlyIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ===================================== */
+/*              SPLASH PAGE              */
+/* ===================================== */
+
+.splash-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.splash-container.fade-out {
+  opacity: 0;
+}
+
+.splash-logo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.8), 0 0 60px rgba(0, 198, 255, 0.5);
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.splash-image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(0, 198, 255, 0.8), 0 0 60px rgba(0, 198, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 0 45px rgba(0, 198, 255, 1), 0 0 85px rgba(0, 198, 255, 0.6);
+  }
+}
+
+/* ===================================== */
+/*          MOBILE RESPONSIVENESS        */
+/* ===================================== */
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 80px auto 40px auto;
+    gap: 1rem;
+  }
+
+  .main-content,
+  .sidebar {
+    width: 100%;
+  }
 }
