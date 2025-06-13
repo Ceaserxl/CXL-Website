@@ -8,7 +8,6 @@ import styles from './NavBar.module.css';
 
 export default function NavBar() {
   const pathname = usePathname();
-  if (pathname === '/') return null;
 
   const navItems = [
     { label: 'Home', href: '/home' },
@@ -30,6 +29,9 @@ export default function NavBar() {
   }, []);
 
   useEffect(() => setIsMobileMenuOpen(false), [pathname]);
+
+  // ✅ Now place conditional rendering AFTER all hooks
+  if (pathname === '/') return null;
 
   const getLinkStyle = (isActive, isHover) => ({
     color: isActive ? '#00c6ff' : isHover ? '#ffd700' : '#ffffff',
