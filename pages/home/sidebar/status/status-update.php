@@ -20,3 +20,5 @@ foreach ($services as &$service) {
 }
 
 echo json_encode($services);
+
+?>
