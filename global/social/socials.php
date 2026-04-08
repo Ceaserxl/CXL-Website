@@ -6,7 +6,7 @@
     <a href="https://discord.gg/NRmeVVb6gU" target="_blank" rel="noopener noreferrer" aria-label="Discord">
       <img src="images/discord.svg" alt="Discord">
     </a>
-    <a href="https://www.facebook.com/fkinggoogleit/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <a href="https://www.facebook.com/voegelejj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
       <img src="images/facebook.svg" alt="Facebook">
     </a>
     <a href="https://www.instagram.com/jeremyvoegele/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
