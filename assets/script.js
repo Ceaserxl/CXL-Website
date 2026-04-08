@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           container.innerHTML += `
             <div class='d-flex align-items-center justify-content-between mb-2'>
               <div class='d-flex align-items-center'>
-                <img src='images/${s.icon}' alt='${s.name}' width='28' height='28' class='me-2'>
+                <!-- <img src='images/${s.icon}' alt='${s.name}' width='28' height='28' class='me-2'> -->
                 <strong>${s.name}</strong>
               </div>
               <span class='badge ${badgeClass}'>${s.status.charAt(0).toUpperCase() + s.status.slice(1)}</span>

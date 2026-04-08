@@ -3,10 +3,11 @@
 /* ===================================== */
 
 .navbar {
-  background: var(--navbar-gradient);
-  border-bottom: 1px solid #007bff66;
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
-  animation: glow-cycle 6s linear infinite;
+  margin: auto;
+  max-width: 1000px;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+  background-color: var(--dark-bg);
+  border-radius: 10px;
 }
 
 .navbar-brand img {

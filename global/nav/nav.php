@@ -1,7 +1,7 @@
 <!-- includes/nav.php -->
 <link rel="stylesheet" href="/global/nav/style.css" />
 
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-xl navbar-dark sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="/">
       <img src="images/default_avatar.png" alt="Avatar" />
@@ -42,9 +42,10 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Email:</strong> <a href="mailto:jeremy.voegele@gmail.com" class="text-light">jeremy.voegele@gmail.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:voegele.jeremy@gmail.com" class="text-light">voegele.jeremy@gmail.com</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/Ceaserxl" target="_blank" rel="noopener noreferrer" class="text-light">github.com/Ceaserxl</a></p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeremy-voegele-5062951b7/" target="_blank" rel="noopener noreferrer" class="text-light">linkedin.com/in/jeremy-voegele</a></p>
+        <p><strong>Discord:</strong> ceaserxl</p>
         <p><strong>Location:</strong> San Diego, CA</p>
       </div>
     </div>

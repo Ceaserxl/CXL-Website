@@ -11,10 +11,10 @@
               <p class="mb-0">IT Specialist | Developer | Veteran</p>
             </div>
           </div>
-          <p>
+          <!-- <p>
             Welcome to my personal portfolio. I'm a U.S. Navy veteran and IT specialist with a passion for Linux systems, cloud infrastructure, and full-stack development.
             Here you'll find my work, projects, and technical journey as I transition from military service to the tech industry.
-          </p>
+          </p> -->
         </div>
 
         <div class="card-section mt-4 animated-section">
@@ -81,9 +81,9 @@
 
       <!-- Sidebar -->
       <div class="col-md-4 animated-section">
-        <?php include __DIR__ . '/sidebar/github.php'; ?>
         <?php include __DIR__ . '/sidebar/discord.php'; ?>
         <?php include __DIR__ . '/sidebar/status/status.php'; ?>
+        <?php include __DIR__ . '/sidebar/github.php'; ?>
       </div>
     </div>
   </div>
