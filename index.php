@@ -44,7 +44,7 @@ $isRoot = !isset($_GET['page']);
   <?php include './global/social/socials.php'; ?>
 
   <footer class="mt-5 py-4 text-center">
-    <small>Jeremy Voegele <?php echo date("Y"); ?>  All Rights Reserved.</small>
+    <small>Built by Jeremy Voegele · <?php echo date("Y"); ?></small>
   </footer>
   
   <script src="./assets/popper.min.js"></script>

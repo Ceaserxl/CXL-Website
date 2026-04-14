@@ -28,7 +28,7 @@
           $marginClass = ($index == $total - 1) ? 'mb-0' : 'mb-4';
 
           echo "<div class='{$marginClass}'>";
-          echo "<h5><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white text-decoration-underline'>" . htmlspecialchars($repo['name']) . "</a> | ★ {$repo['stargazers_count']}</h5>";
+          echo "<h5><a href='" . htmlspecialchars($repo['html_url']) . "' target='_blank' class='text-white text-decoration-underline'>" . htmlspecialchars($repo['name']) . "</a></h5>";
           echo "<p class='mb-1 text-white'>" . htmlspecialchars($repo['description'] ?? 'No description provided') . "</p>";
 
           // Get latest commit (included in repo object to avoid extra requests if using GraphQL or GitHub API v4)
@@ -42,8 +42,6 @@
               $commitMsg = htmlspecialchars($commit['commit']['message']);
               $commitDate = date('Y-m-d H:i', strtotime($commit['commit']['committer']['date']));
               $commitUrl = htmlspecialchars($commit['html_url']);
-
-              // echo "<p class='mb-2 text-white small'>Latest commit: <a href='{$commitUrl}' target='_blank' class='text-white text-decoration-underline'>{$commitMsg}</a> on {$commitDate}</p>";
               echo "<p class='mb-2 text-white small'>Latest commit: <a href='{$commitUrl}' target='_blank' class='text-white text-decoration-underline'>{$commitDate}</a></p>";
             } else {
               echo "<p class='mb-2 text-white small'>No recent commits found.</p>";

@@ -17,11 +17,14 @@
         }
       }
 
-      // header: logo + guild name
+      // header: logo + guild name + join pill
       echo '<div class="d-flex justify-content-center mb-3">';
       echo   '<a href="' . $inviteLink . '" target="_blank" class="d-flex align-items-center text-decoration-none">';
       echo     '<img src="' . $iconUrl . '" alt="Guild Logo" class="rounded" width="40" height="40">';
-      echo     '<h5 class="mb-0 ms-2 text-white">' . $guildName . '</h5>';
+      echo     '<h5 class="mb-0 ms-2 text-white d-flex align-items-center">';
+      echo       $guildName;
+      echo       '<span class="badge rounded-pill bg-success ms-2">Join</span>';
+      echo     '</h5>';
       echo   '</a>';
       echo '</div>';
 
